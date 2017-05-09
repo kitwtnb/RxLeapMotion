@@ -25,7 +25,7 @@ namespace RxLeapMotion
 
         public override void OnConnect(Controller controller)
         {
-            if (connect.IsDisposed == false)
+            if (connect.IsDisposed == false && controller != null)
             {
                 connect.OnNext(controller);
             }
@@ -33,7 +33,7 @@ namespace RxLeapMotion
 
         public override void OnDisconnect(Controller controller)
         {
-            if (disconnect.IsDisposed == false)
+            if (disconnect.IsDisposed == false && controller != null)
             {
                 disconnect.OnNext(controller);
             }
@@ -41,7 +41,7 @@ namespace RxLeapMotion
 
         public override void OnInit(Controller controller)
         {
-            if (init.IsDisposed == false)
+            if (init.IsDisposed == false && controller != null)
             {
                 init.OnNext(controller);
             }
@@ -49,7 +49,7 @@ namespace RxLeapMotion
 
         public override void OnExit(Controller controller)
         {
-            if (exit.IsDisposed == false)
+            if (exit.IsDisposed == false && controller != null)
             {
                 exit.OnNext(controller);
             }
@@ -57,7 +57,7 @@ namespace RxLeapMotion
 
         public override void OnFocusGained(Controller controller)
         {
-            if (focusGained.IsDisposed == false)
+            if (focusGained.IsDisposed == false && controller != null)
             {
                 focusGained.OnNext(controller);
             }
@@ -65,7 +65,7 @@ namespace RxLeapMotion
 
         public override void OnFocusLost(Controller controller)
         {
-            if (focusLost.IsDisposed == false)
+            if (focusLost.IsDisposed == false && controller != null)
             {
                 focusLost.OnNext(controller);
             }
@@ -73,7 +73,7 @@ namespace RxLeapMotion
 
         public override void OnFrame(Controller controller)
         {
-            if (frame.IsDisposed == false)
+            if (frame.IsDisposed == false && controller.Frame() != null)
             {
                 frame.OnNext(controller.Frame());
             }
