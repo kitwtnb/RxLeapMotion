@@ -9,13 +9,19 @@ namespace RxLeapMotion
 {
     public class RxLeap : IDisposable
     {
-        private RxListener listener;
-        private Controller controller;
+        public IObservable<Controller> Connect      => listener.ConnectObservable;
+        public IObservable<Controller> Disconnect   => listener.DisconnectObservable;
+        public IObservable<Controller> Init         => listener.InitObservable;
+        public IObservable<Controller> Exit         => listener.ExitObservable;
+        public IObservable<Controller> FocusGained  => listener.FocusGainedObservable;
+        public IObservable<Controller> FocusLost    => listener.FocusLostObservable;
+        public IObservable<Frame> Frame             => listener.FrameObservable;
+
+        private RxListener listener = new RxListener();
+        private Controller controller = new Controller();
 
         public RxLeap()
         {
-            listener = new RxListener();
-            controller = new Controller();
             controller.AddListener(listener);
         }
 
