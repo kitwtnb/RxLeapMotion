@@ -5,7 +5,7 @@ using System.Reactive.Subjects;
 
 namespace RxLeapMotion
 {
-    public class RxListener : Listener
+    internal class RxListener : Listener
     {
         public IObservable<Controller> ConnectObservable     => connect.AsObservable();
         public IObservable<Controller> DisconnectObservable  => disconnect.AsObservable();
@@ -73,7 +73,7 @@ namespace RxLeapMotion
 
         public override void OnFrame(Controller controller)
         {
-            if (frame.IsDisposed == false && controller.Frame() != null)
+            if (frame.IsDisposed == false && controller != null && controller.Frame() != null)
             {
                 frame.OnNext(controller.Frame());
             }
