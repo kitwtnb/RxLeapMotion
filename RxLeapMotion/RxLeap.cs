@@ -1,13 +1,9 @@
 ﻿using Leap;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RxLeapMotion
 {
-    public class RxLeap : IDisposable
+    public class RxLeap : IRxLeap, IDisposable
     {
         public IObservable<Controller> Connect      => listener.ConnectObservable;
         public IObservable<Controller> Disconnect   => listener.DisconnectObservable;

@@ -11,7 +11,7 @@ namespace Sample
     {
         static void Main(string[] args)
         {
-            var leap = new RxLeap();
+            IRxLeap leap = new RxLeap();
             leap.Connect.Subscribe(c => Console.WriteLine("Connect"));
             leap.Disconnect.Subscribe(c => Console.WriteLine("Disconnect"));
             leap.Init.Subscribe(c => Console.WriteLine("Init"));
