@@ -18,6 +18,7 @@ namespace RxLeapMotion
 
         public RxLeap()
         {
+            controller.SetPolicyFlags(Controller.PolicyFlag.POLICYBACKGROUNDFRAMES);
             controller.AddListener(listener);
         }
 
